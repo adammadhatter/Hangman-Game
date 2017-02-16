@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="assets/trydesk.css">
-    <title>Van Halen - Hangman !!!</title>
-  </head>
-  <body>
-
-
-  <p>Guesses Left: <span id="guesses-left"></span></p>
-  <h3 id="word-blank"></h3>
-
-  <div id="game">
-      <p>Press any key to start playing !!!</p>
-    </div>
-
- 	<h2>.... Welcome to ....</h2>
-
-  <h1>Van Halen - Hangman !!!</h1>
-
-	<body background="http://orig10.deviantart.net/c9bd/f/2011/358/c/5/c5fbf494522a7b99d9b3efa0f3d6492a-d4k2jaz.jpg">
-  
-    <script type="text/javascript">
-
-  var wordList = ["Eruption", "Frankenstein", "Oakland", "3", "Gary Cherone", "Black Sabbath", "Pensacola"];
+var wordList = ["Eruption", "Frankenstein", "Oakland", "3",
+ "Gary Cherone", "Black Sabbath", "Pensacola"];
   var correctLetter = [];
   var wrongLetter = [];
   var lettersGuessed = [];
@@ -115,17 +91,3 @@
 
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>
