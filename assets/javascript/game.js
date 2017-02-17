@@ -1,8 +1,8 @@
-var wordList = ["Eruption", "Frankenstein", "Oakland", "3",
- "Gary Cherone", "Black Sabbath", "Pensacola"];
+  var wordList = ["eruption", "frankenstein", "oakland", "3",
+ "gary cherone", "black sabbath", "pensacola"];
   var correctLetter = [];
   var wrongLetter = [];
-  var lettersGuessed = [];
+  var letterGuessed = [];
 
   var chosenWord = "";
   var letterInChosenWord = [];
@@ -13,7 +13,7 @@ var wordList = ["Eruption", "Frankenstein", "Oakland", "3",
   var winCounter = 0;
   var lossCounter = 0;
   var numGuesses = 9;
-
+  
   function startGame(){
 
 //1. select a word at random
@@ -26,46 +26,49 @@ var wordList = ["Eruption", "Frankenstein", "Oakland", "3",
   wrongGuesses = [];
 
   chosenWord = wordList[Math.floor(Math.random() * wordList.length)];
-  letterInChosenWord = chosenWord.split();
-  numBlanks = letterInChosenWord.length;
+  lettersInChosenWord = chosenWord.split("");
+  numBlanks = lettersInChosenWord.length;
   console.log(chosenWord);
   console.log(numBlanks);
 
 
   for(var i = 0; i < numBlanks; i++){
-    blanksandsuccesses.push("_")
+    blanksAndSuccesses.push("_");
 
   }
-  console.log(blanksandsuccesses);
-  document.getElementById("guesses-left").innerHTML = numguesses;
-  document.getElementById("word-blank").innerHTML = blanksAndSuccesses.join("");
+  console.log(blanksAndSuccesses);
+  document.getElementById("word-blank").innerHTML = blanksAndSuccesses.join(" ");
+  document.getElementById("guesses-left").innerHTML = numGuesses;
+  
 
 
   }
 
-  function checkletters(letter){
+  function checkLetters(letter){
 
     //1. compare the letter the user picks matches any of theletters in the word
     //2. i want a conditional statement to determine if the letter the user picked is in the word. if so, do something,if not, do something else
     //3. if the user is wrong we want to decrease the numGuesses variable by one
 
+    var letterInWord = false;
+
     for(var i = 0; i < numBlanks; i++){
         if(chosenWord[i] === letter){
-            letterInword = true;
+            letterInWord = true;
 
 
         } 
     }
 
-    if(letterInword){ 
+    if(letterInWord){ 
           for(i = 0; i < numBlanks; i++){
               if(chosenWord[i] === letter){
-              blanksandsuccesses[i] = letter;
+              blanksAndSuccesses[i] = letter;
 
           }     
           }
     }else{
-        numGuesses "";
+        numGuesses --;
         wrongGuesses.push(letter)
     }
 
@@ -77,16 +80,37 @@ var wordList = ["Eruption", "Frankenstein", "Oakland", "3",
     //2. its going to update the html with guesses we have left
     //3. its going to update the html to show the wrong guesses
     //4. its going to d(etermine whether the user won the game or not
-    
-      }
+  document.getElementById("word-blank").innerHTML = blanksAndSuccesses.join(" ");  
+  document.getElementById("guesses-left").innerHTML = numGuesses;
+  document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
+
+  if(lettersInChosenWord === blanksAndSuccesses){
+      winCounter++;
+      alert("You Win!!");
+      document.getElementById('win-counter').innerHTML = winCounter;
+      startGame();
+  }else if(numGuesses === 0){
+    document.getElementById('loss-counter').innerHTML = lossCounter++;
+    alert("you don't have any more guesses");
+    startGame();
+  }
+
+
+
+
+
+
+}
   startGame();
   document.onkeyup = function(event){
 
     //1. its going to take in the letter we type in
     //2. its going to pass it through the checkLetter function
   
-    var lettersGuessed = String.fromCharCode(event.keyCode).toLowerCase();console.log("this is the letter we typed", lettersGuessed)
-      checkletters(lettersGuessed)
+    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+    console.log("this is the letter we typed", letterGuessed)
+    checkLetters(letterGuessed)
+    roundComplete();
 
 
 
