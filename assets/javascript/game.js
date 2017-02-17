@@ -1,4 +1,4 @@
-  var wordList = ["eruption", "frankenstein", "oakland", "3",
+  var wordList = ["eruption", "frankenstein", "oakland", "three",
  "gary cherone", "black sabbath", "pensacola"];
   var correctLetter = [];
   var wrongLetter = [];
@@ -11,7 +11,7 @@
   var wrongGuesses = [];
 
   var winCounter = 0;
-  var lossCounter = 0;
+  var lossCounter = 1;
   var numGuesses = 9;
   
   function startGame(){
@@ -84,13 +84,13 @@
   document.getElementById("guesses-left").innerHTML = numGuesses;
   document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 
-  if(lettersInChosenWord === blanksAndSuccesses){
+  if(lettersInChosenWord.join(" ") === blanksAndSuccesses.join(" ")){
       winCounter++;
       alert("You Win!!");
       document.getElementById('win-counter').innerHTML = winCounter;
       startGame();
   }else if(numGuesses === 0){
-    document.getElementById('loss-counter').innerHTML = lossCounter++;
+    document.getElementById('loss-counter').innerHTML = lossCounter ++;
     alert("you don't have any more guesses");
     startGame();
   }
